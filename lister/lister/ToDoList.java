@@ -58,6 +58,17 @@ public class ToDoList {
 		// TODO print menu of List Options
 	}
 	
+	private static String showListMenu() {
+		out.println("1. List To Do items");
+		out.println("2. Create To Do item");
+		out.println("3. Delete To Do item");
+		out.println("4. Check off To Do item");
+		out.println("5. Close list");
+		out.print("\nMake a selection: ");
+
+		return keyboard.nextLine();
+	}
+	
 	private boolean showListItems() {
 		if (listItems.isEmpty()) {
 			out.println("You have no To Do items on this list...\n");
