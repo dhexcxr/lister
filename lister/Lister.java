@@ -34,7 +34,7 @@ public class Lister {
 				break;
 			}
 			case "2": {
-
+				createList();
 				break;
 			}
 			case "3": {
@@ -82,4 +82,11 @@ public class Lister {
 		out.println();
 	}
 	
+	private static void createList() {
+		out.print("What would you like to name the new Lister list? ");
+		String newListName = keyboard.nextLine();
+		listerLists.add(new ToDoList(newListName));
+		// TODO test for sucsessful list creation
+		out.println("New list created...");		// TODO include list name
+	}
 }
