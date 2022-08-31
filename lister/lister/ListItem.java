@@ -50,7 +50,15 @@ public class ListItem {
 		setDone(false);
 		setFinishedDateTime(new Date());
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		StringBuilder listDetails = new StringBuilder(
+				"ListItem [toDoItem=" + toDoItem + ", creationDateTime=" + creationDateTime + ", done=" + done + "]");
+		if (isDone()) {
+			listDetails.append(" " + getFinishedDateTime());
+		}
+		return listDetails.toString();
+	}
 
 }
