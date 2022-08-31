@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ListItem {
 	
+	// TODO make serializable
+	
 	private String toDoItem;
 	private Date creationDateTime;
 	private boolean done;

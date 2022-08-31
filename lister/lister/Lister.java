@@ -24,11 +24,11 @@ public class Lister {
 		out.println("Welcome to Lister");
 
 		while (true) {
-			String mainMeduSelection = showMainMenu();
+			String mainMenuSelection = showMainMenu();
 			
 			out.println();
 
-			switch (mainMeduSelection) {
+			switch (mainMenuSelection) {
 			case "1": {
 				listLists();
 				break;
@@ -38,7 +38,7 @@ public class Lister {
 				break;
 			}
 			case "3": {
-
+				deleteList();
 				break;
 			}
 			case "4": {
@@ -50,7 +50,7 @@ public class Lister {
 				return;
 			}
 			default:
-				out.println("Invalid selection: " + mainMeduSelection + "\n\n");
+				out.println("Invalid selection: " + mainMenuSelection + "\n\n");
 			}
 		}
 
@@ -67,19 +67,22 @@ public class Lister {
 		return keyboard.nextLine();
 	}
 
-	private static void listLists() {
+	private static boolean listLists() {
 		if (listerLists.isEmpty()) {
 			out.println("You have no lists...\n");
-			return;
+			return false;
 		}
 
 		ListIterator<ToDoList> listerIterator = listerLists.listIterator();
 
+		int i = 1;
+		
 		while (listerIterator.hasNext()) {
-			out.println(listerIterator.next().toString());
+			out.println(i + ". " + listerIterator.next().toString());
 		}
 		
 		out.println();
+		return true;
 	}
 	
 	private static void createList() {
@@ -88,5 +91,39 @@ public class Lister {
 		listerLists.add(new ToDoList(newListName));
 		// TODO test for sucsessful list creation
 		out.println("New list created...");		// TODO include list name
+	}
+	
+	private static void deleteList() {
+		if(listLists()) {
+			out.print("Which list would you like to remove? ");
+			String listIndexInput = keyboard.nextLine();
+			
+			int listIndex = Integer.parseInt(listIndexInput);
+			
+			ListIterator<ToDoList> deleteIterator = listerLists.listIterator(listIndex);
+			ToDoList listToDelete = deleteIterator.next();
+			
+			while (true) {
+				out.print("Delete list: " + listToDelete.toString() + "? [Y/N] ");
+				String deleteConfirmation = keyboard.nextLine();
+				
+				switch (deleteConfirmation.toUpperCase()) {
+				case "Y": {
+					deleteIterator.remove();
+					// TODO confirm deletion
+					out.println(listToDelete.toString() + " deleted...");
+					return;
+				}
+				case "N": {
+					out.println(listToDelete.toString() + " not deleted...");
+					return;
+				}
+				default:
+					out.println("Invalid selection: " + deleteConfirmation + "\n\n");
+				}
+			}
+			
+		}
+		
 	}
 }
