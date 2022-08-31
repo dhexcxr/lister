@@ -91,8 +91,8 @@ public class ToDoList {
 		}
 	}
 	
-	private static String showListMenu() {
-		out.println("List Menu");
+	private String showListMenu() {
+		out.println("List Menu for " + this.toString());
 		out.println("1. List To Do items");
 		out.println("2. Create To Do item");
 		out.println("3. Delete To Do item");
@@ -116,7 +116,7 @@ public class ToDoList {
 			out.println(i + ". " + listerIterator.next().toString());
 		}
 
-		out.println();
+		out.print("\n\n");
 		return true;
 	}
 	
@@ -141,7 +141,7 @@ public class ToDoList {
 			ListItem listItemToDelete = deleteIterator.previous();
 			
 			if (listItemToDelete.isDone()) {
-				out.println("Cannot delete a completed To Do List item...");
+				out.println("Cannot delete a completed To Do List item...\n");
 				return;
 			}
 
