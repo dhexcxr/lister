@@ -59,7 +59,7 @@ public class ToDoList {
 //		showListItems();
 
 		while (true) {
-			out.println(this.toString());
+			out.println("Current list:\n" + this.toString());
 			String listMenuSelection = showListMenu();
 
 			out.println();
@@ -92,6 +92,7 @@ public class ToDoList {
 	}
 	
 	private static String showListMenu() {
+		out.println("List Menu");
 		out.println("1. List To Do items");
 		out.println("2. Create To Do item");
 		out.println("3. Delete To Do item");
@@ -108,9 +109,8 @@ public class ToDoList {
 			return false;
 		}
 
-		ListIterator<ListItem> listerIterator = listItems.listIterator();
-
 		out.println("Current Items on list:");
+		ListIterator<ListItem> listerIterator = listItems.listIterator();
 		int i = 1;
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
