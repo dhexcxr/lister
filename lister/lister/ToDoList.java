@@ -56,7 +56,7 @@ public class ToDoList {
 
 	public void openList() {
 		// TODO print menu of List Options
-		showListItems();
+//		showListItems();
 
 		while (true) {
 			out.println(this.toString());
@@ -110,8 +110,8 @@ public class ToDoList {
 
 		ListIterator<ListItem> listerIterator = listItems.listIterator();
 
+		out.println("Current Items on list:");
 		int i = 1;
-
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
 		}
@@ -126,7 +126,7 @@ public class ToDoList {
 		String newListItemName = keyboard.nextLine();
 		listItems.add(new ListItem(newListItemName));
 		// TODO test for successful ToDo Item creation
-		out.println("New To Do item created..."); // TODO include To Do item name
+		out.println("New To Do item created...\n"); // TODO include To Do item name
 	}
 	
 	private void deleteListItem() {
