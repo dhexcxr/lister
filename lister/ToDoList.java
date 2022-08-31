@@ -4,8 +4,13 @@ import static java.lang.System.out;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ToDoList {
+	
+	private static Scanner keyboard = new Scanner(System.in);
+	
+	// TODO make serializable
 
 	private String listName;
 	private List<ListItem> listItems;
@@ -28,6 +33,12 @@ public class ToDoList {
 	
 	public void setListItems(List<ListItem> listItems) {
 		this.listItems = listItems;
+	}
+	
+	public void addNewListItem() {
+		out.print("What would you like to name the new Lister To Do item? ");
+		String newToDoItemName = keyboard.nextLine();
+		listItems.add(new ListItem(newToDoItemName));
 	}
 	
 	public ToDoList(String listName) {
