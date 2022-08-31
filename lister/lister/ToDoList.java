@@ -59,6 +59,7 @@ public class ToDoList {
 		showListItems();
 
 		while (true) {
+			out.println(this.toString());
 			String listMenuSelection = showListMenu();
 
 			out.println();
