@@ -33,7 +33,6 @@ public class ListItem {
 
 	public void setDone(boolean done) {
 		this.done = done;
-		setFinishedDateTime(new Date(System.currentTimeMillis()));
 	}
 
 	public Date getFinishedDateTime() {
@@ -49,6 +48,11 @@ public class ListItem {
 		setCreationDateTime(new Date(System.currentTimeMillis()));
 		setDone(false);
 		setFinishedDateTime(new Date());
+	}
+	
+	public void checkOffListItem() {
+		setDone(true);
+		setFinishedDateTime(new Date(System.currentTimeMillis()));
 	}
 
 	@Override
