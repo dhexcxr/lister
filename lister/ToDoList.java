@@ -3,6 +3,7 @@ package lister;
 import static java.lang.System.out;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ public class ToDoList {
 	// TODO make serializable
 
 	private String listName;
+	private Date creationDateTime;
 	private List<ListItem> listItems;
 	
 	public String getListName() {
@@ -21,6 +23,14 @@ public class ToDoList {
 	
 	public void setListName(String listName) {
 		this.listName = listName;
+	}
+	
+	public Date getCreationDateTime() {
+		return creationDateTime;
+	}
+
+	public void setCreationDateTime(Date creationDateTime) {
+		this.creationDateTime = creationDateTime;
 	}
 	
 	public List<ListItem> getListItems() {
@@ -43,6 +53,7 @@ public class ToDoList {
 	
 	public ToDoList(String listName) {
 		setListName(listName);
+		setCreationDateTime(new Date(System.currentTimeMillis()));
 		setListItems(new ArrayList<>());
 	}
 	
@@ -53,6 +64,6 @@ public class ToDoList {
 	@Override
 	public String toString() {
 		// TODO make better
-		return "ToDoList [listName=" + listName + "]";
+		return listName + ", Created: " + getCreationDateTime();
 	}
 }
