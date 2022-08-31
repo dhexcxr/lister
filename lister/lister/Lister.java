@@ -73,10 +73,9 @@ public class Lister {
 			return false;
 		}
 
+		out.println("Current To Do lists:");
 		ListIterator<ToDoList> listerIterator = listerLists.listIterator();
-
 		int i = 1;
-
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
 		}
@@ -101,7 +100,7 @@ public class Lister {
 			int listIndex = Integer.parseInt(listIndexInput);
 
 			ListIterator<ToDoList> deleteIterator = listerLists.listIterator(listIndex);
-			ToDoList listToDelete = deleteIterator.next();
+			ToDoList listToDelete = deleteIterator.previous();
 
 			while (true) {
 				out.print("Delete list: " + listToDelete.toString() + "? [Y/N] ");
@@ -111,11 +110,11 @@ public class Lister {
 				case "Y": {
 					deleteIterator.remove();
 					// TODO confirm deletion
-					out.println(listToDelete.toString() + " deleted...");
+					out.println(listToDelete.toString() + " deleted...\n");
 					return;
 				}
 				case "N": {
-					out.println(listToDelete.toString() + " not deleted...");
+					out.println(listToDelete.toString() + " not deleted...\n");
 					return;
 				}
 				default:
