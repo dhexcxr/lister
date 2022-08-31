@@ -6,17 +6,17 @@ public class ListItem {
 
 	// TODO make serializable
 
-	private String toDoItem;
+	private String listItemName;
 	private Date creationDateTime;
 	private boolean done;
 	private Date finishedDateTime;
 
-	public String getToDoItem() {
-		return toDoItem;
+	public String getListItemName() {
+		return listItemName;
 	}
 
-	public void setToDoItem(String toDoItem) {
-		this.toDoItem = toDoItem;
+	public void setListItemName(String toDoItem) {
+		this.listItemName = toDoItem;
 	}
 
 	public Date getCreationDateTime() {
@@ -45,7 +45,7 @@ public class ListItem {
 	}
 
 	public ListItem(String toDoItem) {
-		setToDoItem(toDoItem);
+		setListItemName(toDoItem);
 		setCreationDateTime(new Date(System.currentTimeMillis()));
 		setDone(false);
 		setFinishedDateTime(new Date());
@@ -54,7 +54,7 @@ public class ListItem {
 	@Override
 	public String toString() {
 		StringBuilder listDetails = new StringBuilder(
-				"ListItem [toDoItem=" + toDoItem + ", creationDateTime=" + creationDateTime + ", done=" + done + "]");
+				"ListItem [toDoItem=" + listItemName + ", creationDateTime=" + creationDateTime + ", done=" + done + "]");
 		if (isDone()) {
 			listDetails.append(" " + getFinishedDateTime());
 		}
