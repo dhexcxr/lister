@@ -20,9 +20,13 @@ public class Lister {
 		if (listerLists == null) {
 			listerLists = new ArrayList<>();
 		}
+		
+		out.println("Welcome to Lister");
 
 		while (true) {
-			String mainMeduSelection = showMenu();
+			String mainMeduSelection = showMainMenu();
+			
+			out.println();
 
 			switch (mainMeduSelection) {
 			case "1": {
@@ -52,21 +56,20 @@ public class Lister {
 
 	}
 
-	private static String showMenu() {
-		out.println("Welcome to Lister");
+	private static String showMainMenu() {
 		out.println("1. List Lister lists");
 		out.println("2. Create Lister list");
-		out.println("3. Delete Lister lists");
-		out.println("4. Open Lister lists");
+		out.println("3. Delete Lister list");
+		out.println("4. Open Lister list");
 		out.println("5. Quit Lister");
-		out.println("\nMake a selection: ");
+		out.print("\nMake a selection: ");
 
 		return keyboard.nextLine();
 	}
 
 	private static void listLists() {
 		if (listerLists.isEmpty()) {
-			out.println("You have no lists...");
+			out.println("You have no lists...\n");
 			return;
 		}
 
@@ -75,5 +78,8 @@ public class Lister {
 		while (listerIterator.hasNext()) {
 			out.println(listerIterator.next().toString());
 		}
+		
+		out.println();
 	}
+	
 }
