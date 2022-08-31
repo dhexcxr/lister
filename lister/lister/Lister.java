@@ -20,12 +20,12 @@ public class Lister {
 		if (listerLists == null) {
 			listerLists = new ArrayList<>();
 		}
-		
+
 		out.println("Welcome to Lister");
 
 		while (true) {
 			String mainMenuSelection = showMainMenu();
-			
+
 			out.println();
 
 			switch (mainMenuSelection) {
@@ -42,7 +42,7 @@ public class Lister {
 				break;
 			}
 			case "4": {
-
+				openList();
 				break;
 			}
 			case "5": {
@@ -76,37 +76,37 @@ public class Lister {
 		ListIterator<ToDoList> listerIterator = listerLists.listIterator();
 
 		int i = 1;
-		
+
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
 		}
-		
+
 		out.println();
 		return true;
 	}
-	
+
 	private static void createList() {
 		out.print("What would you like to name the new Lister list? ");
 		String newListName = keyboard.nextLine();
 		listerLists.add(new ToDoList(newListName));
-		// TODO test for sucsessful list creation
-		out.println("New list created...");		// TODO include list name
+		// TODO test for successful list creation
+		out.println("New list created...\n"); // TODO include list name
 	}
-	
+
 	private static void deleteList() {
-		if(listLists()) {
+		if (listLists()) {
 			out.print("Which list would you like to remove? ");
 			String listIndexInput = keyboard.nextLine();
-			
+
 			int listIndex = Integer.parseInt(listIndexInput);
-			
+
 			ListIterator<ToDoList> deleteIterator = listerLists.listIterator(listIndex);
 			ToDoList listToDelete = deleteIterator.next();
-			
+
 			while (true) {
 				out.print("Delete list: " + listToDelete.toString() + "? [Y/N] ");
 				String deleteConfirmation = keyboard.nextLine();
-				
+
 				switch (deleteConfirmation.toUpperCase()) {
 				case "Y": {
 					deleteIterator.remove();
@@ -122,8 +122,20 @@ public class Lister {
 					out.println("Invalid selection: " + deleteConfirmation + "\n\n");
 				}
 			}
-			
 		}
-		
+	}
+
+	private static void openList() {
+		if (listLists()) {
+			out.print("Which list would you like to open? ");
+			String listIndexInput = keyboard.nextLine();
+
+			int listIndex = Integer.parseInt(listIndexInput);
+
+			ListIterator<ToDoList> openIterator = listerLists.listIterator(listIndex);
+			ToDoList listToOpen = openIterator.previous();
+
+			listToOpen.openList();
+		}
 	}
 }
