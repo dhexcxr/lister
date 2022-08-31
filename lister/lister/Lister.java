@@ -102,6 +102,11 @@ public class Lister {
 
 			ListIterator<ToDoList> deleteIterator = listerLists.listIterator(listIndex);
 			ToDoList listToDelete = deleteIterator.previous();
+			
+			if (!listToDelete.getListItems().isEmpty()) {
+				out.println("Cannot delete a To Do list with items on it...\n");
+				return;
+			}
 
 			while (true) {
 				out.print("Delete list: " + listToDelete.toString() + "? [Y/N] ");
