@@ -57,6 +57,7 @@ public class Lister {
 	}
 
 	private static String showMainMenu() {
+		out.println("Main Menu");
 		out.println("1. List Lister lists");
 		out.println("2. Create Lister list");
 		out.println("3. Delete Lister list");
@@ -134,6 +135,8 @@ public class Lister {
 			ListIterator<ToDoList> openIterator = listerLists.listIterator(listIndex);
 			ToDoList listToOpen = openIterator.previous();
 
+			out.println();
+			
 			listToOpen.openList();
 		}
 	}
