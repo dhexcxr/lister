@@ -78,7 +78,7 @@ public class ToDoList {
 				break;
 			}
 			case "4": {
-				//			openList();
+				checkOffListItem();
 				break;
 			}
 			case "5": {
@@ -169,6 +169,35 @@ public class ToDoList {
 	
 	private void checkOffListItem() {
 		// TODO mark a list item as Done
+		if(showListItems()) {
+			out.print("Which To Do item would you like to check off? ");
+			String toDoItemIndexInput = keyboard.nextLine();
+
+			int toDoItemIndex = Integer.parseInt(toDoItemIndexInput);
+
+			ListIterator<ListItem> checkOffIterator = listItems.listIterator(toDoItemIndex);
+			ListItem listItemToCheckOff = checkOffIterator.previous();
+
+			while (true) {
+				out.print("Check off To Do item: " + listItemToCheckOff.toString() + "? [Y/N] ");
+				String checkOffConfirmation = keyboard.nextLine();
+
+				switch (checkOffConfirmation.toUpperCase()) {
+				case "Y": {
+					listItemToCheckOff.checkOffListItem();
+					// TODO confirm deletion
+					out.println(listItemToCheckOff.toString() + " checked off...\n");
+					return;
+				}
+				case "N": {
+					out.println(listItemToCheckOff.toString() + " not checked off...\n");
+					return;
+				}
+				default:
+					out.println("Invalid selection: " + checkOffConfirmation + "\n\n");
+				}
+			}
+		}
 	}
 
 
