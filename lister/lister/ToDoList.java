@@ -74,7 +74,7 @@ public class ToDoList {
 				break;
 			}
 			case "3": {
-				//			deleteList();
+				deleteListItem();
 				break;
 			}
 			case "4": {
@@ -131,6 +131,40 @@ public class ToDoList {
 	
 	private void deleteListItem() {
 		// TODO delete a list item
+		if (showListItems()) {
+			out.print("Which list would you like to remove? ");
+			String toDoItemIndexInput = keyboard.nextLine();
+
+			int toDoItemIndex = Integer.parseInt(toDoItemIndexInput);
+
+			ListIterator<ListItem> deleteIterator = listItems.listIterator(toDoItemIndex);
+			ListItem listItemToDelete = deleteIterator.previous();
+			
+			if (listItemToDelete.isDone()) {
+				out.println("Cannot delete a completed To Do List item...");
+				return;
+			}
+
+			while (true) {
+				out.print("Delete list: " + listItemToDelete.toString() + "? [Y/N] ");
+				String deleteConfirmation = keyboard.nextLine();
+
+				switch (deleteConfirmation.toUpperCase()) {
+				case "Y": {
+					deleteIterator.remove();
+					// TODO confirm deletion
+					out.println(listItemToDelete.toString() + " deleted...\n");
+					return;
+				}
+				case "N": {
+					out.println(listItemToDelete.toString() + " not deleted...\n");
+					return;
+				}
+				default:
+					out.println("Invalid selection: " + deleteConfirmation + "\n\n");
+				}
+			}
+		}
 	}
 	
 	private void checkOffListItem() {
