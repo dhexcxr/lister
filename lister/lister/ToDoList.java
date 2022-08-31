@@ -56,6 +56,38 @@ public class ToDoList {
 
 	public void openList() {
 		// TODO print menu of List Options
+		showListItems();
+
+		while (true) {
+			String listMenuSelection = showListMenu();
+
+			out.println();
+
+			switch (listMenuSelection) {
+			case "1": {
+				showListItems();
+				break;
+			}
+			case "2": {
+//				createListItem();
+				break;
+			}
+			case "3": {
+				//			deleteList();
+				break;
+			}
+			case "4": {
+				//			openList();
+				break;
+			}
+			case "5": {
+				//			out.println("Good bye...");
+				return;
+			}
+			default:
+				out.println("Invalid selection: " + listMenuSelection + "\n\n");
+			}
+		}
 	}
 	
 	private static String showListMenu() {
