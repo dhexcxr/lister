@@ -69,7 +69,7 @@ public class ToDoList {
 				break;
 			}
 			case "2": {
-//				createListItem();
+				createListItem();
 				break;
 			}
 			case "3": {
@@ -118,6 +118,24 @@ public class ToDoList {
 		out.println();
 		return true;
 	}
+	
+	private void createListItem() {
+		// TODO create a new To Do list item
+		out.print("What would you like to name the new To Do item? ");
+		String newListItemName = keyboard.nextLine();
+		listItems.add(new ListItem(newListItemName));
+		// TODO test for successful ToDo Item creation
+		out.println("New To Do item created..."); // TODO include To Do item name
+	}
+	
+	private void deleteListItem() {
+		// TODO delete a list item
+	}
+	
+	private void checkOffListItem() {
+		// TODO mark a list item as Done
+	}
+
 
 	@Override
 	public String toString() {
