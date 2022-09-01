@@ -56,9 +56,6 @@ public class ToDoList implements Serializable{
 	}
 
 	public void openList() {
-		// TODO print menu of List Options
-//		showListItems();
-
 		while (true) {
 			String listMenuSelection = showListMenu();
 
@@ -195,7 +192,6 @@ public class ToDoList implements Serializable{
 			}
 		}
 	}
-
 
 	@Override
 	public String toString() {
