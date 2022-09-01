@@ -8,21 +8,27 @@ import java.io.ObjectOutputStream;
 
 public class Serializer {
 
-	public static Object deserialize(String file) throws IOException, ClassNotFoundException {
+	public static Object deserialize(String file) {
 		Object obj  = new Object();
 		
 		try (FileInputStream fis = new FileInputStream(file);
 				ObjectInputStream ois = new ObjectInputStream(fis)) {
 			obj = ois.readObject();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return obj;
 	}
 	
-	public static void serializer(Object obj, String file) throws IOException {
+	public static void serializer(Object obj, String file) {
 		try (FileOutputStream fos = new FileOutputStream(file);
 				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(obj);
+		} catch (IOException e) {
+			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
