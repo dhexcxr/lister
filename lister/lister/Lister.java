@@ -80,6 +80,7 @@ public class Lister {
 		int i = 1;
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
+			i++;
 		}
 
 		out.println();
