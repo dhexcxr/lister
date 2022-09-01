@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class ListItem implements Serializable {
 
-	// TODO make serializable
 	private static final long serialVersionUID = 3103112339987530571L;
 	
 	private String listItemName;
@@ -60,9 +59,9 @@ public class ListItem implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder listDetails = new StringBuilder(
-				"ListItem [toDoItem=" + listItemName + ", creationDateTime=" + creationDateTime + ", done=" + done + "]");
+				listItemName + ", Created: " + creationDateTime + ", Complete: " + (done ? "Yes": "No"));
 		if (isDone()) {
-			listDetails.append(" " + getFinishedDateTime());
+			listDetails.append(", Completed: " + getFinishedDateTime());
 		}
 		return listDetails.toString();
 	}
