@@ -61,7 +61,6 @@ public class ToDoList implements Serializable{
 //		showListItems();
 
 		while (true) {
-			out.println("Current list:\n" + this.toString());
 			String listMenuSelection = showListMenu();
 
 			out.println();
@@ -116,6 +115,7 @@ public class ToDoList implements Serializable{
 		int i = 1;
 		while (listerIterator.hasNext()) {
 			out.println(i + ". " + listerIterator.next().toString());
+			i++;
 		}
 
 		out.print("\n\n");
