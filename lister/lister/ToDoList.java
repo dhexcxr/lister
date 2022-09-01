@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class ToDoList implements Serializable{
 
-	// TODO make serializable
 	private static final long serialVersionUID = -6494044540380915496L;
 
 	private static Scanner keyboard = new Scanner(System.in);
@@ -93,7 +92,7 @@ public class ToDoList implements Serializable{
 	}
 	
 	private String showListMenu() {
-		out.println("List Menu for " + this.toString());
+		out.println("List Menu for " + this.getListName());
 		out.println("1. List To Do items");
 		out.println("2. Create To Do item");
 		out.println("3. Delete To Do item");
@@ -123,7 +122,6 @@ public class ToDoList implements Serializable{
 	}
 	
 	private void createListItem() {
-		// TODO create a new To Do list item
 		out.print("What would you like to name the new To Do item? ");
 		String newListItemName = keyboard.nextLine();
 		listItems.add(new ListItem(newListItemName));
@@ -132,7 +130,6 @@ public class ToDoList implements Serializable{
 	}
 	
 	private void deleteListItem() {
-		// TODO delete a list item
 		if (showListItems()) {
 			out.print("Which list would you like to remove? ");
 			String toDoItemIndexInput = keyboard.nextLine();
@@ -148,18 +145,17 @@ public class ToDoList implements Serializable{
 			}
 
 			while (true) {
-				out.print("Delete list: " + listItemToDelete.toString() + "? [Y/N] ");
+				out.print("Delete To Do item: " + listItemToDelete.toString() + "? [Y/N] ");
 				String deleteConfirmation = keyboard.nextLine();
 
 				switch (deleteConfirmation.toUpperCase()) {
 				case "Y": {
 					deleteIterator.remove();
-					// TODO confirm deletion
-					out.println(listItemToDelete.toString() + " deleted...\n");
+					out.println(listItemToDelete.getListItemName() + " deleted...\n");
 					return;
 				}
 				case "N": {
-					out.println(listItemToDelete.toString() + " not deleted...\n");
+					out.println(listItemToDelete.getListItemName() + " not deleted...\n");
 					return;
 				}
 				default:
@@ -170,7 +166,6 @@ public class ToDoList implements Serializable{
 	}
 	
 	private void checkOffListItem() {
-		// TODO mark a list item as Done
 		if(showListItems()) {
 			out.print("Which To Do item would you like to check off? ");
 			String toDoItemIndexInput = keyboard.nextLine();
@@ -187,12 +182,11 @@ public class ToDoList implements Serializable{
 				switch (checkOffConfirmation.toUpperCase()) {
 				case "Y": {
 					listItemToCheckOff.checkOffListItem();
-					// TODO confirm deletion
-					out.println(listItemToCheckOff.toString() + " checked off...\n");
+					out.println(listItemToCheckOff.getListItemName() + " checked off...\n");
 					return;
 				}
 				case "N": {
-					out.println(listItemToCheckOff.toString() + " not checked off...\n");
+					out.println(listItemToCheckOff.getListItemName() + " not checked off...\n");
 					return;
 				}
 				default:
@@ -205,7 +199,6 @@ public class ToDoList implements Serializable{
 
 	@Override
 	public String toString() {
-		// TODO make better
 		return listName + ", Created: " + getCreationDateTime();
 	}
 }
