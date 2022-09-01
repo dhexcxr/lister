@@ -7,6 +7,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Serializer {
+	
+	private Serializer() {
+		throw new IllegalStateException("Utility class");
+	}
 
 	public static Object deserialize(String file) {
 		Object obj  = new Object();
