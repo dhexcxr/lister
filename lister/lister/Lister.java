@@ -117,12 +117,11 @@ public class Lister {
 				switch (deleteConfirmation.toUpperCase()) {
 				case "Y": {
 					deleteIterator.remove();
-					// TODO confirm deletion
-					out.println(listToDelete.toString() + " deleted...\n");
+					out.println(listToDelete.getListName() + " deleted...\n");
 					return;
 				}
 				case "N": {
-					out.println(listToDelete.toString() + " not deleted...\n");
+					out.println(listToDelete.getListName() + " not deleted...\n");
 					return;
 				}
 				default:
