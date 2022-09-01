@@ -2,17 +2,19 @@ package lister;
 
 import static java.lang.System.out;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
 
-public class ToDoList {
-
-	private static Scanner keyboard = new Scanner(System.in);
+public class ToDoList implements Serializable{
 
 	// TODO make serializable
+	private static final long serialVersionUID = -6494044540380915496L;
+
+	private static Scanner keyboard = new Scanner(System.in);
 
 	private String listName;
 	private Date creationDateTime;
@@ -27,11 +29,11 @@ public class ToDoList {
 	}
 
 	public Date getCreationDateTime() {
-		return creationDateTime;
+		return new Date(creationDateTime.getTime());
 	}
 
 	public void setCreationDateTime(Date creationDateTime) {
-		this.creationDateTime = creationDateTime;
+		this.creationDateTime = new Date(creationDateTime.getTime());
 	}
 
 	public List<ListItem> getListItems() {

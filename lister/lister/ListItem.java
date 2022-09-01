@@ -1,11 +1,13 @@
 package lister;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ListItem {
+public class ListItem implements Serializable {
 
 	// TODO make serializable
-
+	private static final long serialVersionUID = 3103112339987530571L;
+	
 	private String listItemName;
 	private Date creationDateTime;
 	private boolean done;
@@ -20,11 +22,11 @@ public class ListItem {
 	}
 
 	public Date getCreationDateTime() {
-		return creationDateTime;
+		return new Date(creationDateTime.getTime());
 	}
 
 	public void setCreationDateTime(Date creationDateTime) {
-		this.creationDateTime = creationDateTime;
+		this.creationDateTime = new Date(creationDateTime.getTime());
 	}
 
 	public boolean isDone() {
