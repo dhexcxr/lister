@@ -9,16 +9,16 @@ import static java.lang.System.out;
 public class Lister {
 
 	private static Scanner keyboard = new Scanner(System.in);
+	private static String listFile = "lister.lists";
+	private static List<ToDoList> listerLists = new ArrayList<>();
 
-	private static List<ToDoList> listerLists;
-
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
-		// TODO check for serialized lists
-			// populate listerLists if present
-			// make new list if not present
-		if (listerLists == null) {
-			listerLists = new ArrayList<>();
+		// populate listerLists if present from serialized objects
+		Object fromFile = Serializer.deserialize(listFile);
+		if (fromFile instanceof List<?>) {
+			listerLists = (List<ToDoList>) fromFile;
 		}
 
 		out.println("Welcome to Lister");
@@ -47,6 +47,7 @@ public class Lister {
 			}
 			case "5": {
 				out.println("Good bye...");
+				Serializer.serializer(listerLists, listFile);
 				return;
 			}
 			default:
